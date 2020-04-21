@@ -30,3 +30,4 @@ Route::put('/users/update_email/{id}', 'UserController@updateEmail')->middleware
 Route::get('/users/modifier_pwd/{id}', 'UserController@editpwd')->middleware('auth');
 Route::put('/users/update_pwd/{id}', 'UserController@updatepwd')->middleware('auth');
 Route::get('/users/supprimer_user/{id}', 'UserController@destroy')->middleware('auth');
+Route::put('/users/update_visible/{id}', 'UserController@updateVisible')->middleware('auth');

@@ -76,7 +76,25 @@ class UserController extends Controller
 
 
 
+    public function updateVisible(Request $request, $id)
+    {
+        $user=User::find($id);
+        $imageupload=request()->file('Photo');
+       $imagename= time() . '.'.$imageupload->getClientOriginalExtension();
+        $imagepath=public_path('/images/');
+       $imageupload->move($imagepath,$imagename);
 
+        $user->update([
+            'Linkedin'=>$request->get('Linkedin'),
+            'Skype'=>$request->get('Skype'),
+            'Twitter'=>$request->get('Twitter'),
+            'Facebook'=>$request->get('Facebook'),
+            'Instagram'=>$request->get('Instagram'),
+            'Photo'=> '/images/' . $imagename,
+        ]);
+        return redirect('/home');
+
+    }
 
 
 

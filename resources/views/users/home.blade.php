@@ -56,7 +56,7 @@
 
 
 
-
+<!--Votre compte et informations personnelles-->
             <div class="content">
 
                 <div class="content" style="margin-top:0px;">
@@ -106,7 +106,14 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="col-md-4"><strong>Langues parlées</strong></label>
+                                                <label class="col-md-4"><strong>Langues parlées</strong> </label>
+                                                <label>
+                                                    @if(Auth::user()->langue1=='IT') Italie
+                                                    @elseif(Auth::user()->langue1=='AL') Allemand
+                                                    @elseif(Auth::user()->langue1=='FR') Français
+                                                    @elseif(Auth::user()->langue1=='AR') Arabe
+                                                    @endif
+                                                </label>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-4">Langue1</label>
@@ -158,6 +165,91 @@
 
                                                 </select>
                                             </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="submit" value="Sauver" class="btn btn-success float-left">
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="content" style="margin-top:0px;">
+                    <h4 style="width:70%;color:#024C8C;">Augmentez votre visibilité (Réseaux sociaux, photo)</h4>
+                    <div style="margin-left:0px;">
+
+                        <div class="container businessCard" id="businessCard-1123">
+                            <div class="card-body" style="display: block;">
+                                <form enctype="multipart/form-data" method="post" action="{{url('/users/update_visible/' .Auth::user()->id )}}">
+                                    {{csrf_field()}}
+                                    {{ method_field('PUT')}}
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group row">
+                                                <label class="col-md-4">Linkedin </label>
+                                                <input class="col-md-8 form-control" placeholder="http://www.linkedin.com/in/myname-123456" type="text" name="Linkedin" value="{{ Auth::user()->Linkedin }}"  >
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-4">Skype </label>
+                                                <input class="col-md-8 form-control" type="text" name="Skype" placeholder="my.skypeaccount" value="{{ Auth::user()->Skype }}" >
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-4">Twitter </label>
+                                                <input type="text" class="form-control col-md-8" name="Twitter" placeholder="https://twitter.com/myaccount"  value="{{ Auth::user()->Twitter }}">
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-4">Facebook</label>
+                                                <input type="text" class="form-control col-md-8" name="Facebook" placeholder="https://www.facebook.com/myaccount" value="{{ Auth::user()->Facebook }}">
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-4">Mobile</label>
+                                                <input type="text" class="form-control col-md-8" name="Instagram" placeholder="https://www.instagram.com/myaccount" value="{{ Auth::user()->Instagram }}" >
+
+                                            </div>
+                                                <div class="form-group row">
+                                                    <label class="col-md-4">Photo</label>
+                                                    <input type="file" class="form-control col-md-8" name="Photo"  >
+              <img src="{{asset(Auth::user()->Photo)}}" style="width: 52px; margin-left: 149px;">
+                                                </div>
+
+
+
+
 
 
                                         </div>
